@@ -5,16 +5,33 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
+
+import Card from './views/card';
 
 type Props = {};
 
 export default class Overview extends Component<Props> {
+  static navigatorStyle = {
+    navBarHidden: true
+  };
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Overview Screen</Text>
-      </View>
+      <ScrollView style={styles.container}>
+        <Text style={styles.welcome}>Wetter</Text>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </ScrollView>
     );
   }
 }
@@ -22,13 +39,13 @@ export default class Overview extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
+    fontSize: 50,
+    marginTop: 50,
+    marginBottom: 30,
+    fontWeight: 'bold',
     margin: 10
   },
   instructions: {
