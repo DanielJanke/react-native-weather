@@ -23,7 +23,13 @@ export default class Card extends Component<Props> {
   render() {
     const { city, temperature, onPress } = this.props;
     return (
-      <TouchableOpacity onPress={onPress} style={styles.container}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[
+          styles.container,
+          { backgroundColor: `hsl(${240 + temperature * 2.1}, 100%, 50%)` }
+        ]}
+      >
         <Text style={styles.city}>{city}</Text>
         <Text style={styles.degree}>{temperature} °C</Text>
       </TouchableOpacity>
@@ -42,6 +48,10 @@ const styles = StyleSheet.create({
   },
   city: {
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 20,
+    color: '#fff'
+  },
+  degree: {
+    color: '#fff'
   }
 });

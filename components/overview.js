@@ -25,7 +25,8 @@ export default class Overview extends Component<Props> {
       cities: [
         { city: 'Berlin', temperature: 1 },
         { city: 'Bangkok', temperature: 1 },
-        { city: 'München', temperature: 1 }
+        { city: 'München', temperature: 1 },
+        { city: 'Reykjavík', temperature: 1 }
       ],
       newCity: ''
     };
@@ -71,12 +72,13 @@ export default class Overview extends Component<Props> {
     });
   };
 
-  _handlePress = () => {
+  _handlePress = temperature => {
     this.props.navigator.showModal({
       screen: 'example.Detail', // unique ID registered with Navigation.registerScreen
       title: 'Detail', // title of the screen as appears in the nav bar (optional)
       passProps: {
-        close: this._onPressClose
+        close: this._onPressClose,
+        temperature
       }, // simple serializable object that will pass as props to the modal (optional)
       navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
       animationType: 'slide-up' // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
@@ -120,7 +122,9 @@ export default class Overview extends Component<Props> {
         {this.state.cities.map(city => {
           return (
             <Card
-              onPress={this._handlePress}
+              onPress={() => {
+                this._handlePress(city.temperature);
+              }}
               city={city.city}
               temperature={city.temperature}
             />

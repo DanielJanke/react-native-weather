@@ -7,13 +7,16 @@
 import React, { Component } from 'react';
 import {
   Platform,
+  Image,
   StyleSheet,
   Text,
-  ScrollView,
+  View,
   TouchableOpacity
 } from 'react-native';
 
-type Props = {};
+type Props = {
+  temperature: number
+};
 
 export default class Detail extends Component<Props> {
   static navigatorStyle = {
@@ -24,18 +27,30 @@ export default class Detail extends Component<Props> {
     console.log(this.props);
 
     return (
-      <ScrollView style={styles.container}>
-        <Text style={styles.welcome}>Hier ist das genaue Wetter drin..</Text>
-        {/* <TouchableOpacity style={styles.close}>Schließen</TouchableOpacity> */}
+      <View style={styles.container}>
+        <Image
+          source={
+            this.props.temperature > 15
+              ? require('../assets/sun.jpg')
+              : require('../assets/rain.jpg')
+          }
+          style={styles.backgroundImage}
+        />
+        <Text style={styles.welcome}>So siehts aus.</Text>
         <TouchableOpacity onPress={this.props.close}>
           <Text>Schließen</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   close: {
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
@@ -44,5 +59,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10
+  },
+  backgroundImage: {
+    // flex: 1,
+    position: 'absolute'
   }
 });
