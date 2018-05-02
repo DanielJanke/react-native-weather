@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>LKMNY6BLWN.org.reactjs.native.example.weatherapp</string>
+	<string>LKMNY6BLWN.org.reactjs.native.example.weatherapp.1</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>LKMNY6BLWN.org.reactjs.native.example.weatherapp</string>
+		<string>LKMNY6BLWN.org.reactjs.native.example.weatherapp.1</string>
 	</array>
 </dict>
 </plist>

@@ -5,24 +5,38 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native';
 
 type Props = {};
 
 export default class Detail extends Component<Props> {
+  static navigatorStyle = {
+    navBarHidden: true
+  };
+
   render() {
+    console.log(this.props);
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Detail Screen</Text>
-      </View>
+      <ScrollView style={styles.container}>
+        <Text style={styles.welcome}>Hier ist das genaue Wetter drin..</Text>
+        {/* <TouchableOpacity style={styles.close}>Schließen</TouchableOpacity> */}
+        <TouchableOpacity onPress={this.props.close}>
+          <Text>Schließen</Text>
+        </TouchableOpacity>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  close: {
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
@@ -30,10 +44,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
   }
 });

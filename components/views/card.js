@@ -5,21 +5,28 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity
+} from 'react-native';
 
 type Props = {
   city: string,
-  temperature: number
+  temperature: number,
+  onPress: () => void
 };
 
 export default class Card extends Component<Props> {
   render() {
-    const { city, temperature } = this.props;
+    const { city, temperature, onPress } = this.props;
     return (
-      <View style={styles.container}>
+      <TouchableOpacity onPress={onPress} style={styles.container}>
         <Text style={styles.city}>{city}</Text>
-        <Text style={styles.degree}>20°C</Text>
-      </View>
+        <Text style={styles.degree}>{temperature} °C</Text>
+      </TouchableOpacity>
     );
   }
 }
